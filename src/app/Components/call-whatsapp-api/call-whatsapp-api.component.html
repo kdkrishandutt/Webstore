@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="Row">
+    <div class="well well-lg">
+      <div *ngFor="let option of options" class="col-lg-2 clasmain">
+        <input type="radio" name="price" (click)="getValue(option.id)" value={{option.id}}>{{option.Name}}
+      </div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="col-lg-3">&nbsp;</div>
+    <div class="col-lg-6" *ngIf="isdisplay==1">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Message Api</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="phoneNo">Phone No:</label>
+            <input type="text" class="form-control" id="phoneNo" [(ngModel)]="phoneNo">
+          </div>
+          <div class="form-group">
+            <label for="msg">Message:</label>
+            <textarea type="text" class="form-control" id="msg" [(ngModel)]="msg"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="onMessageClick()">Submit</button>
+          </div>
+          <div class="form-group">
+            <h2>Result</h2>
+            <div class="well">{{result}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngIf="isdisplay==2">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Media Api</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="MphoneNo">Phone No:</label>
+            <input type="text" class="form-control" id="MphoneNo" [(ngModel)]="MphoneNo">
+          </div>
+          <div class="form-group">
+            <label for="Mmsg">Media Path:</label>
+            <input type="text" class="form-control" id="Mmsg" [(ngModel)]="Mmsg" disabled />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="onMediaClick()">Submit</button>
+          </div>
+          <div class="form-group">
+            <h2>Result</h2>
+            <div class="well">{{Mresult}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngIf="isdisplay==3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Image Api</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="MiphoneNo">Phone No:</label>
+            <input type="text" class="form-control" id="MiphoneNo" [(ngModel)]="MiphoneNo">
+          </div>
+          <div class="form-group">
+            <label for="Mimsg">Image Path:</label>
+            <input type="text" class="form-control" id="Mimsg" [(ngModel)]="Mimsg" disabled />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="onImageClick()">Submit</button>
+          </div>
+          <div class="form-group">
+            <h2>Result</h2>
+            <div class="well">{{Miresult}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngIf="isdisplay==4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Link Api</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="MlphoneNo">Phone No:</label>
+            <input type="text" class="form-control" id="MlphoneNo" [(ngModel)]="MlphoneNo">
+          </div>
+          <div class="form-group">
+            <label for="Mlmsg">Link Path:</label>
+            <input type="text" class="form-control" id="Mlmsg" [(ngModel)]="Mlmsg" disabled />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="onLinkClick()">Submit</button>
+          </div>
+          <div class="form-group">
+            <h2>Result</h2>
+            <div class="well">{{Mlresult}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6" *ngIf="isdisplay==5">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Hook Call</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" (click)="onHookClick()">Submit</button>
+          </div>
+          <div class="form-group">
+            <h2>Response</h2>
+            <div class="well">{{MHresult}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">&nbsp;</div>
+
+  </div>
+</div>

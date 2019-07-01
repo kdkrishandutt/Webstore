@@ -17,10 +17,8 @@ export class NavbarComponent implements OnInit {
     } else {
       this.islogin = false;
     }
-    this.router.onSameUrlNavigation = 'reload';
   }
   logout() {
-    debugger;
     console.log('logout');
     this.authService.logout();
     location.reload();
