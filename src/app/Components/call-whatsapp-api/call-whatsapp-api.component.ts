@@ -30,7 +30,9 @@ export class CallWhatsappApiComponent implements OnInit {
   Mlresult: any;
   MHresult: any;
   isdisplay: number;
+  Mhmsg: string;
   options: MyOptions[] = new Array();
+  ResultVal: MyOptions[] = new Array();
   @BlockUI() blockUI: NgBlockUI;
   constructor(private whatsappAPIService: WhatsappAPIService) { }
 
@@ -42,7 +44,6 @@ export class CallWhatsappApiComponent implements OnInit {
       new MyOptions(3, 'Image API'), new MyOptions(4, 'Link API'), new MyOptions(5, 'Web Hook'));
   }
   onMessageClick() {
-    
     this.blockUI.start('Wait..');
     this.whatsappAPIService.CallmsgAPI('SendWhatsmsg', this.phoneNo, this.msg).subscribe(res => {
       this.result = JSON.stringify(res);
@@ -80,12 +81,17 @@ export class CallWhatsappApiComponent implements OnInit {
   }
   onHookClick() {
     this.blockUI.start('Wait..');
-    this.whatsappAPIService.CallHookAPI('SendWhatasappHook?Response=').subscribe(res => {
-      this.MHresult = JSON.stringify(res);
-      console.log(res);
-      this.blockUI.stop();
-    });
-    // this.result = '[{PhoneNo:' + this.phoneNo + ',Msg:' + this.msg + '}]';
+    this.ResultVal.push(new MyOptions(1, this.Mhmsg));
+    this.blockUI.stop();
+    setTimeout(() => {
+      this.whatsappAPIService.CallHookAPI('SendWhatasappHook', this.Mhmsg).subscribe(res => {
+        this.MHresult = res; // JSON.stringify(res);
+        this.ResultVal.push(new MyOptions(2, this.MHresult));
+        this.Mhmsg = "";
+        console.log(res);
+      });
+    }, 2000);
+    debugger;
   }
   getValue(id) {
     this.isdisplay = id;

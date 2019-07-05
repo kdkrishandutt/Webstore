@@ -56,3 +56,25 @@
   .control__input::placeholder {
     color: #eae9e9;
   }
+  .form-group.clschats {
+    overflow: auto;
+    max-height: 272px;
+}
+.alert.alert-info {
+  float: left;
+  width: 342px;
+}
+.alert.alert-warning {
+  float: right;
+  width: 240px;
+}
+.alert-info {
+  color: #000000 !important;
+  background-color: #78b1ce !important;
+  border-color: #6bb8c7 !important;
+}
+.alert-warning {
+  color: #000000 !important;
+  background-color: #f9c3b3 !important;
+  border-color: #b5876c !important;
+}

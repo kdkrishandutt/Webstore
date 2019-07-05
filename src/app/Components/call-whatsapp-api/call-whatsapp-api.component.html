@@ -100,12 +100,21 @@
       <div class="panel panel-primary">
         <div class="panel-heading">Whatsapp Hook Call</div>
         <div class="panel-body">
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary" (click)="onHookClick()">Submit</button>
+          <div class="form-group clschats">
+            <div *ngFor="let val of ResultVal">
+              <div class="alert alert-warning" *ngIf="val.id==1" innerHTML="{{val.Name}}"></div>
+              <div class="alert alert-info" *ngIf="val.id==2" innerHTML="{{val.Name}}"></div>
+            </div>
           </div>
+          <hr />
           <div class="form-group">
-            <h2>Response</h2>
-            <div class="well">{{MHresult}}</div>
+            <div class="col-lg-10">
+              <textarea type="text" class="form-control" id="Mhmsg" rows=1 [(ngModel)]="Mhmsg"></textarea>
+            </div>
+            <div class="col-lg-2">
+              <button type="submit" class="btn btn-primary" (click)="onHookClick()">Submit</button>
+            </div>
+
           </div>
         </div>
       </div>
