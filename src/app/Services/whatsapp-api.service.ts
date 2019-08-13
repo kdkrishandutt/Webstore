@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { WhatsappResponse, Contact, Message } from '../Models/WhatsappResponse';
 @Injectable({
   providedIn: 'root'
 })
@@ -59,9 +60,39 @@ export class WhatsappAPIService {
     let _URL = this.baseUrl + queryString;
     return this._Http.post(_URL, '');
   }
-  CallHookAPI(queryString: string, res: string) {
-    let values = {};
-    let _URL = this.baseUrl + queryString + '?Response=' + res;
-    return this._Http.post(_URL, values);
+  CallHookAPIBack(queryString: string, request: string) {
+    let _URL = this.baseUrl + queryString + '?request=' + request;
+    return this._Http.post(_URL, '');
+
+    // const headers = new HttpHeaders().set('content-type', 'application/json');
+    // var body = {
+    //   eventName :  request.eventName,
+    //   token : request.token,
+    //   uid : request.tuid,
+    //   contactuid : request.contactuid,
+    //   contactname : request.contactname,
+    //   contacttype : request.contacttype, 
+    //   messagedtm : request.messagedtm,
+    //   messageuid : request.messageuid,
+    //   messagecuid : request.messagecuid,
+    //   messagedir : request.messagedir,
+    //   messagetype : request.messagetype,
+    //   messagebodytext : request.messagebodytext,
+    //   messageack : request.messageack
+    //   }
+    // return this._Http.post<WhatsappResponse>(_URL, body, { headers });
+  }
+
+  CallHookAPI(queryString: string, request: WhatsappResponse, contact: Contact, message: Message) {
+    let _URL = this.baseUrl + queryString;
+    const headers = new HttpHeaders().set('content-type', 'application/json');
+    var body = {
+      event: request.eventName,
+      token: request.token,
+      uid: request.tuid,
+      contact: contact,
+      message: message
+    }
+    return this._Http.post(_URL, body);
   }
 }

@@ -14,6 +14,8 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { CallWhatsappApiComponent } from './Components/call-whatsapp-api/call-whatsapp-api.component';
 import { WhatsappAPIService } from './Services/whatsapp-api.service';
 import { BlockUIModule } from 'ng-block-ui';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +29,8 @@ import { BlockUIModule } from 'ng-block-ui';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule, HttpClientModule, BlockUIModule.forRoot()
+    FormsModule,BrowserAnimationsModule,
+    ReactiveFormsModule, HttpClientModule, BlockUIModule.forRoot(), ToastrModule.forRoot(),
   ],
   providers: [AuthGuard, AuthService, WhatsappAPIService],
   bootstrap: [AppComponent]

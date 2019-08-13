@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       userid: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.returnUrl = '/dashboard';
+    this.returnUrl = '/app';
     this.authService.logout();
   }
   get f() { return this.loginForm.controls; }
@@ -37,9 +37,7 @@ export class LoginComponent implements OnInit {
         // this.authService.authLogin(this.model);
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('token', this.f.userid.value);
-        // this.router.navigate([this.returnUrl]);
-        this.router.navigateByUrl('/Home', { skipLocationChange: true }).then(() =>
-          this.router.navigate([this.returnUrl]));
+        window.location.href = this.returnUrl;      
       } else {
         this.message = 'Please check your userid and password';
       }

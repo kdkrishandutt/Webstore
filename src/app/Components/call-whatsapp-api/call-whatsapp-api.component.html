@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="Row">
-    <div class="col-lg-3">&nbsp;</div>
+    <div class="col-lg-3" *ngIf="isdisplay!=6">&nbsp;</div>
     <div class="col-lg-6" *ngIf="isdisplay==1">
       <div class="panel panel-primary">
         <div class="panel-heading">Whatsapp Message Api</div>
@@ -98,28 +98,97 @@
     </div>
     <div class="col-lg-6" *ngIf="isdisplay==5">
       <div class="panel panel-primary">
-        <div class="panel-heading">Whatsapp Hook Call</div>
+        <div class="panel-heading">Whatsapp Responsebot</div>
         <div class="panel-body">
           <div class="form-group clschats">
             <div *ngFor="let val of ResultVal">
               <div class="alert alert-warning" *ngIf="val.id==1" innerHTML="{{val.Name}}"></div>
-              <div class="alert alert-info" *ngIf="val.id==2" innerHTML="{{val.Name}}"></div>
+              <div class="alert alert-info" *ngIf="val.id==2" innerHTML="{{val.Name}}"></div>             
             </div>
-          </div>
+            <div  class="col-lg-12" #TargetId id="TargetId1"></div>
+          </div>         
           <hr />
           <div class="form-group">
             <div class="col-lg-10">
               <textarea type="text" class="form-control" id="Mhmsg" rows=1 [(ngModel)]="Mhmsg"></textarea>
             </div>
             <div class="col-lg-2">
-              <button type="submit" class="btn btn-primary" (click)="onHookClick()">Submit</button>
+              <button type="submit" class="btn btn-primary" (click)="onHookClick(TargetId)">Submit</button>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3">&nbsp;</div>
+    <div class="col-lg-10" *ngIf="isdisplay==6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Whatsapp Web Hook</div>
+        <div class="panel-body">
+          <div class="form-group col-lg-4">
+            <label for="event">event:</label>
+            <input type="text" class="form-control" id="event" [(ngModel)]="event">
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="token">token</label>
+            <input type="text" class="form-control" id="token" [(ngModel)]="token" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="tuid">uid:</label>
+            <input type="text" class="form-control" id="tuid" [(ngModel)]="tuid">
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="contactuid">contact[uid] :</label>
+            <input type="text" class="form-control" id="contactuid" [(ngModel)]="contactuid" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="contactname">contact[name] :</label>
+            <input type="text" class="form-control" id="contactname" [(ngModel)]="contactname">
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="contacttype">contact[type] :</label>
+            <input type="text" class="form-control" id="contacttype" [(ngModel)]="contacttype" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messagedtm">message[dtm]:</label>
+            <input type="text" class="form-control" id="messagedtm" [(ngModel)]="messagedtm">
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messageuid">message[uid] :</label>
+            <input type="text" class="form-control" id="messageuid" [(ngModel)]="messageuid" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messagecuid">message[cuid]:</label>
+            <input type="text" class="form-control" id="messagecuid" [(ngModel)]="messagecuid">
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messagedir">message[dir]:</label>
+            <input type="text" class="form-control" id="messagedir" [(ngModel)]="messagedir" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messagetype">message[type] :</label>
+            <input type="text" class="form-control" id="messagetype" [(ngModel)]="messagetype" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="messagebody">message[body]:</label>
+            <input type="text" class="form-control" id="messagebody" [(ngModel)]="messagebody" />
+          </div>
+          <div class="form-group col-lg-4">
+            <label for="ack">ack:</label>
+            <input type="text" class="form-control" id="ack" [(ngModel)]="ack" />
+          </div>
+          <div class="form-group">
+            <div class="col-lg-10">
+              &nbsp;
+            </div>
+            <div class="col-lg-2">
+              <button type="submit" class="btn btn-primary" (click)="onHookTestClick()" >Submit</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3" *ngIf="isdisplay!=6">&nbsp;</div>
 
   </div>
 </div>
